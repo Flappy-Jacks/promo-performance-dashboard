@@ -9,9 +9,9 @@ interface FunnelProps {
 
 export function Funnel({ eligible, activated, rate }: FunnelProps) {
   return (
-    <ChartPanel title="Eligible → activated" detail="ACCOUNT FUNNEL" className="funnel-panel">
+    <ChartPanel title="Eligible → activated" detail="ACCOUNT FUNNEL" className="">
       {eligible === 0 ? <div className="empty-chart">No eligible accounts in this country.</div> : (
-        <div className="funnel-visual" role="group" aria-label={`${formatNumber(eligible)} eligible accounts led to ${formatNumber(activated)} activations`}>
+        <div className="" role="group" aria-label={`${formatNumber(eligible)} eligible accounts led to ${formatNumber(activated)} activations`}>
           <div className="adoption-kpis">
             <div className="adoption-kpi">
               <span>Eligible accounts</span>
@@ -23,7 +23,7 @@ export function Funnel({ eligible, activated, rate }: FunnelProps) {
               <small>{formatPercent(rate)} activation rate</small>
             </div>
           </div>
-          <div className="funnel-foot">MANUAL CLAIM&nbsp; / &nbsp;PROMOTIONS</div>
+          {/* <div className="funnel-foot">MANUAL CLAIM&nbsp; / &nbsp;PROMOTIONS</div> */}
         </div>
       )}
     </ChartPanel>
