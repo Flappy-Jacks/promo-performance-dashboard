@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# Flycatcher Promotion Performance
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A single-page, client-only dashboard prototype built with React, strict TypeScript, Vite, Tailwind CSS, Recharts, and Framer Motion.
 
-## Available Scripts
+## Run
 
-In the project directory, you can run:
+```sh
+
+npm install
+npm start
+```
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The dev server prints its local URL. Run `npm test` for selector and interaction tests, and `npm run build` for the strict type-check and production bundle.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Structure
 
-### `npm test`
+- `src/components` contains shared controls, charts, the account drawer, and five ordered dashboard sections.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Data and assumptions
 
-### `npm run build`
+- All records are illustrative; there is no backend or production player data.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- The seed contains 12,480 accounts aged at least 365 days and 3,370 promotion activations. Status totals are 80 pending, 1,860 active, 1,010 completed, and 420 forfeited.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ - The reporting currency is USD. Fixed illustrative conversion rates are USD 1.00, GBP 1.28, EUR 1.08, CAD 0.74, and AUD 0.66; these are not live FX rates.
+- The 50% bonus applies to the first qualifying deposit. Rollover is 20× bonus, equivalent to 10× deposit. Only settled wagers count; qualifying wager equals stake multiplied by the game's contribution rate.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Remaining expected house take uses remaining qualifying wagering divided by the observed effective contribution rate, multiplied by one minus weighted RTP.
+- Net contribution is bonus-funded GGR less all credited bonuses plus forfeited bonus cost avoided. ROI is net contribution divided by credited bonuses less forfeitures.
 
-### `npm run eject`
+- Forecasts use observed activation average, 4% weekly decay, current completion rate, average deposit, and weighted house edge. Uptake multipliers are conservative 0.78×, base 1.00×, optimistic 1.22×; completion multipliers are 0.78×, 1.00×, 1.16×. The confidence band is a planning interval, not a statistical guarantee.
+- Review scores combine RTP variance, bonus/cash win-rate gap, unusually fast completion, low-volatility full-contribution wagering, withdrawal after completion, and shared patterns. They prioritize human review and are not determinations of wrongdoing.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Scandium and RM Mono font files were not supplied. Startup logs this once and uses the specified fallbacks: Inter Tight/Manrope for display and JetBrains Mono/IBM Plex Mono for telemetry. Burgundy and warm stone are assumed brand accents.
